@@ -18,15 +18,6 @@ var publicDirectoryPath = path.join(__dirname, "public");
 
 app.use(express.static(publicDirectoryPath));
 
-// socket.emit("updatedCount", count); // socket.emit() emits the event to a single connection
-//io.emit("updatedCount", count); // io.emit() emits the event to every single connection that is available
-// socket.broadcast.emit("message", "A new user has joined!") // emits the event to every single connection available 
-//except the client who is joining(that particular connection)
-
-// io.to(roomName).emit() // emits the event to every single connection available in the specific room
-// socket.broadcast.to(roomName).emit() // same as socket.broadcast.emit() but specific to a given roomName
-
-
 
 io.on("connection", function(socket) {
     console.log("New Web-Socket Connection!");
@@ -103,3 +94,13 @@ io.on("connection", function(socket) {
 server.listen(PORT, function(req, res) {
     console.log(`SERVER STARTED AT PORT ${PORT}...!`)
 })
+
+
+
+// socket.emit("updatedCount", count); // socket.emit() emits the event to a single connection
+//io.emit("updatedCount", count); // io.emit() emits the event to every single connection that is available
+// socket.broadcast.emit("message", "A new user has joined!") // emits the event to every single connection available 
+//except the client who is joining(that particular connection)
+
+// io.to(roomName).emit() // emits the event to every single connection available in the specific room
+// socket.broadcast.to(roomName).emit() // same as socket.broadcast.emit() but specific to a given roomName
