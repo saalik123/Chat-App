@@ -44,7 +44,7 @@ io.on("connection", function(socket) {
             return callback(result.error);
         }
 
-        socket.join(room);
+        socket.join(result.room);
 
         socket.emit("message", generateMessage(`Welcome ${result.username}!`, "Admin"))
         socket.broadcast.to(result.room).emit("message", generateMessage(`${result.username} has joined!`, "Admin"));
