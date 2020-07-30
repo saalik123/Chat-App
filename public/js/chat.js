@@ -14,19 +14,16 @@ var locationTemplate = document.getElementById("location-message-template").inne
 var sidebarTemplate = document.getElementById("sidebar-template").innerHTML;
 
 // Query String - parsing queryString
-var queryObject = Qs.parse(location.search, {
-    ignoreQueryPrefix: true
-});
+var queryObject = Qs.parse(location.search, { ignoreQueryPrefix: true });
 
 var autoScroll = function() {
-
     // always scroll to the bottom
     $messages.scrollTop = $messages.scrollHeight;
 }
 
 
 socket.on("message", function(message) {
-    console.log(message);
+    // console.log(message);
     var html = Mustache.render(messageTemplate, {
         message: message.text,
         username: message.username,
