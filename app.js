@@ -53,14 +53,14 @@ io.on("connection", function(socket) {
 
         var filter = new Filter();
         if (filter.isProfane(message)) {
-            return callback("Profane messages are not allowed!");
+            return callback({ error: "Profane messages are not allowed!" });
         }
 
         var user = getUser(socket.id);
 
 
         io.to(user.room).emit("message", generateMessage(message, user.username));
-        callback("Message Delivered!"); // for acknowledging that server received the message sent by client.
+        callback({ success: "Message Delivered!" }); // for acknowledging that server received the message sent by client.
     })
 
     socket.on("shareLocation", function(coords, callback) {

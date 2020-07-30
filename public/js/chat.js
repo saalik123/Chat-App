@@ -45,7 +45,9 @@ $messageForm.addEventListener("submit", function(e) {
     var message = e.target.elements.message.value;
     socket.emit("sendMessage", message, function(ack) {
         // the function is for receiving acknowledgement from the client that the server received the message sent by client
-        console.log(ack)
+        if (ack.error) {
+            alert(ack.error);
+        }
 
         // enable sendButton
         $messageFormButton.removeAttribute("disabled");
